@@ -63,8 +63,8 @@ function playRound(playerChoice, computerChoice) {
 
 
 // Get name of player
-function getName() {
-    let playerName = prompt("What is your name?") || "HUMAN PLAYER";
+function getName(userName) {
+    let playerName = userName || "HUMAN PLAYER";
     return playerName;
 };
 
@@ -77,13 +77,13 @@ function removeSpaces(stringContent) {
 
 
 // Gets player choice
-function playerChoice(playerName, score) {
-    let playerSelection = prompt(`Round: ${(score.Player + score.Computer) + 1} - ${playerName}, what is your move? (Options are rock, paper or scissors)`);
-    if (typeof playerSelection === "string") {
-        playerSelection = removeSpaces(playerSelection);
-    };
-    return playerSelection;
-};
+// function playerChoice(playerName, score) {
+//     let playerSelection = prompt(`Round: ${(score.Player + score.Computer) + 1} - ${playerName}, what is your move? (Options are rock, paper or scissors)`);
+//     if (typeof playerSelection === "string") {
+//         playerSelection = removeSpaces(playerSelection);
+//     };
+//     return playerSelection;
+// };
 
 
 // Calculate winner or loser - Records valid wins or loses; if invalid, re-starts loop
@@ -123,7 +123,7 @@ function currentScore(playerName, score) {
 // Plays until there have been 5 valid rounds; ties, invalid inputs, etc do not count
 function game() {
 
-    alert(`Welcome to the game of Rock-Paper-Scissors. To play, type either: Rock, Paper, or Scissors. You will play 5 rounds against THE COMPUTER. Good luck!!`);
+    // alert(`Welcome to the game of Rock-Paper-Scissors. To play, type either: Rock, Paper, or Scissors. You will play 5 rounds against THE COMPUTER. Good luck!!`);
     let playerName = getName(),
         score = {
             Player: 0,
@@ -139,16 +139,16 @@ function game() {
     while (score.Player + score.Computer !== 5) {
         playerSelection = playerChoice(playerName, score);
 
-        if (playerSelection === null) {
-            let response = prompt('Are you sure you want to quit? Type "y" if yes or "n" if no') || "n";
-            response = removeSpaces(response);
-            switch (response) {
-                case "y":
-                    return console.log(quitMsg);
-                default:
-                    continue;
-            };
-        };
+        // if (playerSelection === null) {
+        //     let response = prompt('Are you sure you want to quit? Type "y" if yes or "n" if no') || "n";
+        //     response = removeSpaces(response);
+        //     switch (response) {
+        //         case "y":
+        //             return console.log(quitMsg);
+        //         default:
+        //             continue;
+        //     };
+        // };
 
         console.log("Rock..Paper..Scissors....", playerSelection);
         outcome = playRound(playerSelection, computerPlay());
