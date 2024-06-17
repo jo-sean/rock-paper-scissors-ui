@@ -7,19 +7,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock-Paper-Scissors</title>
     <script src="./script/app.js" defer></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- <link rel="icon" href="./img/calculator.png"> -->
 </head>
 
-<body>
+<body onload="game()">
     <main>
         <header>
-            <h1>Rock Paper Scissors</h1>
+            <h1>Rock...Paper...Scissors....GO!</h1>
         </header>
 
 
         <section>
-            <header>
+            <header class="scores">
                 <h2>COMPUTER SCORE: {{compScore}}</h2>
-                <h2>{{userName}} SCORE: {{userScore}}</h2>
+                <h2><span id="playerName"></span> SCORE: {{userScore}}</h2>
             </header>
         </section>
 
@@ -27,11 +29,24 @@
             <header>
                 <h2>Select your move</h2>
             </header>
-            <button>ROCK</button>
-            <button>PAPER</button>
-            <button>SCISSORS</button>
+
+            <form action="">
+                <button class="input-button" value="rock">ROCK</button>
+                <button class="input-button" value="paper">PAPER</button>
+                <button class="input-button" value="scissors">SCISSORS</button>
+            </form>
         </section>
 
+        <section>
+            <header>
+                <h3>RESULTS</h3>
+            </header>
+
+            <p id="results"></p>
+        </section>
+
+
+        <a class="homeReturn" href="./index.html">Go back</a>
     </main>
 
 </body>

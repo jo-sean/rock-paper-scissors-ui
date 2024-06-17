@@ -1,64 +1,101 @@
-header {
-    margin-bottom: 3vh;
-    color: white;
+h1,
+h3 {
+    margin: auto;
+    text-align: center;
+}
+
+.highlight {
+    animation: blinker 2s linear infinite;
+}
+
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
+}
+
+.homeReturn {
+    background-color: white;
+    color: #ffa69e;
+    border: thick dashed #84dcc6;
+    margin: .2em;
+    padding: .5rem;
+    border-radius: .6em;
+    text-align: center;
+    font-size: 1.5rem;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 input {
     text-align: right;
+    border: #84dcc6 solid;
+    padding: 1rem;
+    caret-color: #84dcc6;
+    color: #84dcc6;
+    font-size: 1.3rem;
+    font-weight: bold;
+    border-radius: .6em;
+    margin-bottom: 1.5rem;
+
+}
+
+::placeholder {
+    color: #84dcc6;
+    opacity: 1;
+}
+
+#template {
+    display: none;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #ffa69e;
+    color: white;
+    font-size: 2rem;
+
 }
 
 body {
+    margin: 0 auto;
     display: flex;
     height: 90vh;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     background-color: #ffa69e;
+    color: white;
+    font-size: 2rem;
 }
 
+.container {
+    color: #ffa69e;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    max-width: 300px;
+    align-content: center;
+    padding: 1rem;
+    text-align: center;
+    background-color: white;
+    border-radius: .6em;
+}
 
 .input-button {
-    background-color: #ffa69e;
-    color: white;
-    border: none;
+    background-color: white;
+    color: #ffa69e;
+    border: thick dashed #84dcc6;
     margin: .2em;
-    padding: 2rem;
-    font-size: 1.5rem;
+    padding: .5rem;
     border-radius: .6em;
     text-align: center;
-    font-size: 16px;
+    font-size: 1.5rem;
     transition: background-color 0.3s ease;
 }
 
 .input-button:hover {
     background-color: #84dcc6;
-}
-
-.neg-button {
-    background-color: #ffa69e;
     color: white;
-    border: none;
-    margin: .2em;
-    padding: 1.5rem;
-    font-size: 1.5rem;
-    border-radius: .6em;
-    text-align: center;
-    font-size: 16px;
-    transition: background-color 0.5s ease;
-}
-
-.neg-button:hover {
-    background-color: #84dcc6;
-}
-
-.bottomrow {
-    height: 1rem;
-    width: 6.3rem;
-    margin-bottom: 2rem;
-    text-align: center;
-    background-color: #ffc857;
-}
-
-#cursor {
-    font-size: 30px;
 }

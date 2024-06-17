@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock-Paper-Scissors</title>
     <script src="./script/app.js" defer></script>
+    <link rel="stylesheet" href="./css/style.css">
+    <!-- <link rel="icon" href="./img/calculator.png"> -->
 </head>
 
 <body>
@@ -15,18 +17,55 @@
             <h1>Rock Paper Scissors</h1>
         </header>
 
-        <section>
-            <h2>Instructions</h2>
+        <section id="startBlock">
             <p>Welcome to the game of Rock-Paper-Scissors. <br>
-                To play, click the buttons either: Rock, Paper, or Scissors. <br>
+                To play, click the buttons either: <span class="highlight">ROCK</span>, <span
+                    class="highlight">PAPER</span>, or <span class="highlight">SCISSORS</span>. <br>
                 You will play 5 rounds against...HAL 2024. Good luck!!</p>
 
-            <form action="">
+            <form class="container">
                 <label for="userName">What is your name?</label>
                 <input id="userName" type="text" placeholder="Thy (nick)name">
-                <a href="/pages/gamePage.html"><button type="submit">Start Playing</button></a>
+                <button class="input-button" type="button" value="Enter" onclick="game()">Start Playing</button>
             </form>
         </section>
+
+
+        <section id="template">
+            <section>
+                <hr>
+                <header class="scores">
+                    <h2>COMPUTER Score: <span></span></h2>
+                    <h2><span id="playerName"></span> Score: <span></span></h2>
+                </header>
+                <hr>
+            </section>
+
+            <section>
+                <p id="round">
+
+                </p>
+            </section>
+
+            <section>
+                <header>
+                    <h3>Select your move</h3>
+                </header>
+                <form action="">
+                    <button class="input-button" type="button" onclick="playerChoice('rock')">ROCK</button>
+                    <button class="input-button" type="button" onclick="playerChoice('paper')">PAPER</button>
+                    <button class="input-button" type="button" onclick="playerChoice('scissors')">SCISSORS</button>
+                </form>
+            </section>
+
+            <section>
+
+
+                <p id="results"></p>
+            </section>
+            <a class="homeReturn" href="../index.html">Go back</a>
+        </section>
+
     </main>
 
 </body>

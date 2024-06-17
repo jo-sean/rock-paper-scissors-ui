@@ -1,6 +1,6 @@
 // Author: Sean Perez
 
-const WIN = "win", LOSE = "lose", OPTIONS = ["rock", "paper", "scissors"];
+const WIN = "win", LOSE = "lose", OPTIONS = ["rock", "paper", "scissors"], BUTTONS = document.getElementByClass('choiceButtons');
 
 
 // Func that randomly selects Computer's choice in the game rock, paper, scissors 
@@ -12,10 +12,6 @@ function computerPlay() {
 
 // Func plays one round of rock, paper, scissors comparing the choice from human player vs computer's randomly seclected choice
 function playRound(playerChoice, computerChoice) {
-    const errMessage = `You have typed word or number that is not recognized. Please try again with one of the following:
-    * Rock
-    * Paper
-    * Scissors`;
 
     let outcome = undefined;
 
@@ -57,31 +53,22 @@ function playRound(playerChoice, computerChoice) {
         case LOSE:
             return `You ${outcome}, ${computerChoice} beats ${playerChoice}`;
         default:
-            return errMessage;
+            return;
     };
 };
 
 
 // Get name of player
-function getName(userName) {
-    let playerName = userName || "HUMAN PLAYER";
+function getName() {
+    let playerName = document.getElementById('userName').value
+        || "HUMAN PLAYER";
     return playerName;
 };
 
-// Remove spaces in string and change to lower case
-function removeSpaces(stringContent) {
-    if (typeof stringContent === "string") {
-        return stringContent.trim().toLowerCase();
-    };
-}
 
-
-// Gets player choice
-// function playerChoice(playerName, score) {
-//     let playerSelection = prompt(`Round: ${(score.Player + score.Computer) + 1} - ${playerName}, what is your move? (Options are rock, paper or scissors)`);
-//     if (typeof playerSelection === "string") {
-//         playerSelection = removeSpaces(playerSelection);
-//     };
+// // Gets player choice
+// function playerChoice(choice) {
+//     let playerSelection = choice;
 //     return playerSelection;
 // };
 
@@ -120,44 +107,67 @@ function currentScore(playerName, score) {
 };
 
 
+
 // Plays until there have been 5 valid rounds; ties, invalid inputs, etc do not count
 function game() {
 
-    // alert(`Welcome to the game of Rock-Paper-Scissors. To play, type either: Rock, Paper, or Scissors. You will play 5 rounds against THE COMPUTER. Good luck!!`);
+
     let playerName = getName(),
         score = {
             Player: 0,
             Computer: 0
         },
-        playerSelection,
+        playerSelection = null,
         quitMsg = "Game terminated, thanks for playing!";
 
-    console.log(`${playerName} vs THE COMPUTER
-    Let the game...BEGIN! `
-    );
+    // Shift page from home to game page and add player's name on top of page
+    document.getElementById("startBlock").onclick = function () {
+        document.getElementById("startBlock").style.display = "none";
+        document.getElementById("template").style.display = "flex";
+        document.getElementById('playerName').innerHTML = playerName;
+    };
 
+
+    //Round to win = 5
     while (score.Player + score.Computer !== 5) {
-        playerSelection = playerChoice(playerName, score);
+        document.getElementById('round').innerHTML =
+            `Round: ${(score.Player + score.Computer) + 1} - ${playerName}, 
+    what is your move?`
 
-        // if (playerSelection === null) {
-        //     let response = prompt('Are you sure you want to quit? Type "y" if yes or "n" if no') || "n";
-        //     response = removeSpaces(response);
-        //     switch (response) {
-        //         case "y":
-        //             return console.log(quitMsg);
-        //         default:
-        //             continue;
-        //     };
-        // };
+        wrapper.addEventListener('click', (event) => {
+            const isButton = event.target.nodeName === 'BUTTON';
+            if (!isButton) {
+                return;
+            }
 
-        console.log("Rock..Paper..Scissors....", playerSelection);
-        outcome = playRound(playerSelection, computerPlay());
-        console.log(outcome);
-        calcWinner(score, outcome);
-        currentScore(playerName, score);
+            console.dir(event.target.id);
+        });
+
+        // if (playerSelection !== null) {
+        //     outcome = playRound(playerSelection, computerPlay());
+        //     console.log(outcome);
+        //     calcWinner(score, outcome);
+        //     currentScore(playerName, score);
+        //     playerSelection = null;
+        // }
+
+
     };
 
     showWinner(score, playerName);
 };
 
-game();
+window.addEventListener('keydown', function (event) {
+    let press = event.key;
+    if (press === "Enter") {
+        key = document.querySelector(`button[value='${press}']`);
+    } else if (!`button[value='${press}']`) { return; }
+    key.click();
+});
+
+
+// Take out the loop and create smaller, event listening functions. 
+// Keep the count so that user can still finish after 5 games.
+//If time permits, add an exit game button.
+
+
