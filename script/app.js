@@ -2,7 +2,8 @@
 
 const WIN = "win", LOSE = "lose", OPTIONS = ["rock", "paper", "scissors"], score = {
     Player: 0,
-    Computer: 0
+    Computer: 0,
+    playerName: null
 };
 
 
@@ -12,14 +13,16 @@ function computerPlay() {
     return OPTIONS[playIndex];
 };
 
+
 function humanPlay(playerSelection) {
 
-    outcome = playRound(playerSelection, computerPlay());
-    calcWinner(score, outcome);
-    currentScore(playerName, score);
-    playerSelection = null;
+    if (score.Player + score.Computer < 5) {
+        outcome = playRound(playerSelection, computerPlay());
+        calcWinner(outcome);
+        currentScore();
+    };
 
-    if (score.Player + score.Computer == 5) { showWinner(score, playerName); }
+    if (score.Player + score.Computer == 5) { showWinner(score); }
 
 };
 
@@ -81,7 +84,7 @@ function getName() {
 
 
 // Calculate winner or loser - Records valid wins or loses; if invalid, re-starts loop
-function calcWinner(score, outcome) {
+function calcWinner(outcome) {
     if (outcome.includes("try again")) {
         return;
     } else if (outcome.includes(WIN)) {
@@ -95,35 +98,40 @@ function calcWinner(score, outcome) {
 
 
 // Find overall winner; print out results
-function showWinner(score, playerName) {
-    let winner = "Computer";
+function showWinner() {
+    let winner = "HAL 2024";
     if (score.Player > score.Computer) {
-        winner = playerName;
+        winner = score.playerName;
     };
 
-    console.log(`Game over! Overall winner was ${winner}. 
-    \Final score is ${score.Player} for ${playerName} and ${score.Computer} for Computer. 
-    \Thanks for playing, come play again!`);
+    document.getElementById('results').innerHTML =
+        `Game over! Overall winner was ${winner}. 
+    \Final score is ${score.Player} for ${score.playerName} and ${score.Computer} for Computer. 
+    \Thanks for playing, come play again!`;
 };
 
 
-function currentScore(playerName, score) {
-    console.log(`Current score: 
-        ${playerName}: ${score.Player}
-        Computer: ${score.Computer}`);
+function currentScore() {
+    document.getElementById('outcome').innerHTML = outcome;
+    document.getElementById('halScore').innerHTML = score.Computer;
+    document.getElementById('humScore').innerHTML = score.Player;
+    document.getElementById('results').innerHTML = `Round: ${(score.Player + score.Computer) + 1} - ${score.playerName}, 
+        what is your move?`
 };
 
 
 // Plays until there have been 5 valid rounds; ties, invalid inputs, etc do not count
 function game() {
 
-    let playerName = getName();
+    score.playerName = getName();
 
     // Shift page from home to game page and add player's name on top of page
     document.getElementById("startBlock").onclick = function () {
         document.getElementById("startBlock").style.display = "none";
         document.getElementById("template").style.display = "flex";
-        document.getElementById('playerName').innerHTML = playerName;
+        document.getElementById('playerName').innerHTML = score.playerName;
+        document.getElementById('results').innerHTML = `Round: ${(score.Player + score.Computer) + 1} - ${score.playerName}, 
+    what is your move?`
     };
 };
 
@@ -135,9 +143,5 @@ window.addEventListener('keydown', function (event) {
     key.click();
 });
 
-
-// Take out the loop and create smaller, event listening functions. 
-// Keep the count so that user can still finish after 5 games.
-//If time permits, add an exit game button.
 
 
