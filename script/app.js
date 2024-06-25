@@ -1,12 +1,26 @@
 // Author: Sean Perez
 
-const WIN = "win", LOSE = "lose", OPTIONS = ["rock", "paper", "scissors"], BUTTONS = document.getElementByClass('choiceButtons');
+const WIN = "win", LOSE = "lose", OPTIONS = ["rock", "paper", "scissors"], score = {
+    Player: 0,
+    Computer: 0
+};
 
 
 // Func that randomly selects Computer's choice in the game rock, paper, scissors 
 function computerPlay() {
     playIndex = Math.floor(Math.random() * OPTIONS.length);
     return OPTIONS[playIndex];
+};
+
+function humanPlay(playerSelection) {
+
+    outcome = playRound(playerSelection, computerPlay());
+    calcWinner(score, outcome);
+    currentScore(playerName, score);
+    playerSelection = null;
+
+    if (score.Player + score.Computer == 5) { showWinner(score, playerName); }
+
 };
 
 
@@ -66,13 +80,6 @@ function getName() {
 };
 
 
-// // Gets player choice
-// function playerChoice(choice) {
-//     let playerSelection = choice;
-//     return playerSelection;
-// };
-
-
 // Calculate winner or loser - Records valid wins or loses; if invalid, re-starts loop
 function calcWinner(score, outcome) {
     if (outcome.includes("try again")) {
@@ -107,18 +114,10 @@ function currentScore(playerName, score) {
 };
 
 
-
 // Plays until there have been 5 valid rounds; ties, invalid inputs, etc do not count
 function game() {
 
-
-    let playerName = getName(),
-        score = {
-            Player: 0,
-            Computer: 0
-        },
-        playerSelection = null,
-        quitMsg = "Game terminated, thanks for playing!";
+    let playerName = getName();
 
     // Shift page from home to game page and add player's name on top of page
     document.getElementById("startBlock").onclick = function () {
@@ -126,35 +125,6 @@ function game() {
         document.getElementById("template").style.display = "flex";
         document.getElementById('playerName').innerHTML = playerName;
     };
-
-
-    //Round to win = 5
-    while (score.Player + score.Computer !== 5) {
-        document.getElementById('round').innerHTML =
-            `Round: ${(score.Player + score.Computer) + 1} - ${playerName}, 
-    what is your move?`
-
-        wrapper.addEventListener('click', (event) => {
-            const isButton = event.target.nodeName === 'BUTTON';
-            if (!isButton) {
-                return;
-            }
-
-            console.dir(event.target.id);
-        });
-
-        // if (playerSelection !== null) {
-        //     outcome = playRound(playerSelection, computerPlay());
-        //     console.log(outcome);
-        //     calcWinner(score, outcome);
-        //     currentScore(playerName, score);
-        //     playerSelection = null;
-        // }
-
-
-    };
-
-    showWinner(score, playerName);
 };
 
 window.addEventListener('keydown', function (event) {

@@ -14,20 +14,6 @@ h3 {
     }
 }
 
-.homeReturn {
-    background-color: white;
-    color: #ffa69e;
-    border: thick dashed #84dcc6;
-    margin: .2em;
-    padding: .5rem;
-    border-radius: .6em;
-    text-align: center;
-    font-size: 1.5rem;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-
 input {
     text-align: right;
     border: #84dcc6 solid;
@@ -54,8 +40,22 @@ input {
     flex-direction: column;
     background-color: #ffa69e;
     color: white;
-    font-size: 2rem;
+    font-size: 1.5rem;
+}
 
+#homeReturn {
+    background-color: white;
+    color: #ffa69e;
+    border: thick dashed #84dcc6;
+    margin: .5em;
+    padding: .5rem;
+    border-radius: .6em;
+    text-align: center;
+    font-size: 1.2rem;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    opacity: 70%;
 }
 
 body {
@@ -68,6 +68,8 @@ body {
     background-color: #ffa69e;
     color: white;
     font-size: 2rem;
+    min-width: 100vw;
+    line-height: 1.5;
 }
 
 .container {

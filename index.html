@@ -35,7 +35,7 @@
             <section>
                 <hr>
                 <header class="scores">
-                    <h2>COMPUTER Score: <span></span></h2>
+                    <h2>HAL 2024 Score: <span></span></h2>
                     <h2><span id="playerName"></span> Score: <span></span></h2>
                 </header>
                 <hr>
@@ -51,19 +51,17 @@
                 <header>
                     <h3>Select your move</h3>
                 </header>
-                <form action="">
-                    <button class="input-button" type="button" onclick="playerChoice('rock')">ROCK</button>
-                    <button class="input-button" type="button" onclick="playerChoice('paper')">PAPER</button>
-                    <button class="input-button" type="button" onclick="playerChoice('scissors')">SCISSORS</button>
+                <form class="choiceButtons">
+                    <button class="input-button" type="button" onclick="humanPlay('rock')">ROCK</button>
+                    <button class="input-button" type="button" onclick="humanPlay('paper')">PAPER</button>
+                    <button class="input-button" type="button" onclick="humanPlay('scissors')">SCISSORS</button>
                 </form>
             </section>
 
             <section>
-
-
                 <p id="results"></p>
             </section>
-            <a class="homeReturn" href="../index.html">Go back</a>
+            <a id="homeReturn" href="../index.html">Go back</a>
         </section>
 
     </main>
