@@ -61,14 +61,14 @@ input {
 body {
     margin: 0 auto;
     display: flex;
-    height: 90vh;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     background-color: #ffa69e;
     color: white;
-    font-size: 2rem;
-    min-width: 100vw;
+    font-size: 1.5rem;
+    width: 100%;
+    height: auto;
     line-height: 1.5;
 }
 
@@ -100,4 +100,17 @@ body {
 .input-button:hover {
     background-color: #84dcc6;
     color: white;
+}
+
+.container-score {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    max-width: 100vmin;
+    align-content: center;
+    padding: 1rem;
+    text-align: center;
+    background-color: #ffa69e;
+    border-radius: .6em;
 }

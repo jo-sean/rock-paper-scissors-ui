@@ -7,6 +7,30 @@ const WIN = "win", LOSE = "lose", OPTIONS = ["rock", "paper", "scissors"], score
 };
 
 
+// Get name of player
+function getName() {
+    let playerName = document.getElementById('userName').value
+        || "HUMAN PLAYER";
+    return playerName;
+};
+
+
+// Plays until there have been 5 valid rounds; ties, invalid inputs, etc do not count
+function game() {
+
+    score.playerName = getName();
+
+    // Shift page from home to game page and add player's name on top of page
+    document.getElementById("startBlock").onclick = function () {
+        document.getElementById("startBlock").style.display = "none";
+        document.getElementById("template").style.display = "flex";
+        document.getElementById('playerName').innerHTML = score.playerName;
+        document.getElementById('results').innerHTML = `Round: ${(score.Player + score.Computer) + 1} - ${score.playerName}, 
+    what is your move?`
+    };
+};
+
+
 // Func that randomly selects Computer's choice in the game rock, paper, scissors 
 function computerPlay() {
     playIndex = Math.floor(Math.random() * OPTIONS.length);
@@ -73,12 +97,13 @@ function playRound(playerChoice, computerChoice) {
     };
 };
 
-
-// Get name of player
-function getName() {
-    let playerName = document.getElementById('userName').value
-        || "HUMAN PLAYER";
-    return playerName;
+// Updates the score sheet
+function currentScore() {
+    document.getElementById('outcome').innerHTML = outcome;
+    document.getElementById('halScore').innerHTML = score.Computer;
+    document.getElementById('humScore').innerHTML = score.Player;
+    document.getElementById('results').innerHTML = `Round: ${(score.Player + score.Computer) + 1} - ${score.playerName}, 
+        what is your move?`
 };
 
 
@@ -108,32 +133,6 @@ function showWinner() {
     Final score is ${score.Player} for ${score.playerName} and ${score.Computer} for Computer. 
     Thanks for playing, come play again!`;
 };
-
-
-function currentScore() {
-    document.getElementById('outcome').innerHTML = outcome;
-    document.getElementById('halScore').innerHTML = score.Computer;
-    document.getElementById('humScore').innerHTML = score.Player;
-    document.getElementById('results').innerHTML = `Round: ${(score.Player + score.Computer) + 1} - ${score.playerName}, 
-        what is your move?`
-};
-
-
-// Plays until there have been 5 valid rounds; ties, invalid inputs, etc do not count
-function game() {
-
-    score.playerName = getName();
-
-    // Shift page from home to game page and add player's name on top of page
-    document.getElementById("startBlock").onclick = function () {
-        document.getElementById("startBlock").style.display = "none";
-        document.getElementById("template").style.display = "flex";
-        document.getElementById('playerName').innerHTML = score.playerName;
-        document.getElementById('results').innerHTML = `Round: ${(score.Player + score.Computer) + 1} - ${score.playerName}, 
-    what is your move?`
-    };
-};
-
 
 // document.querySelector("userName").addEventListener('change', (e) => {
 //         alert(e.currentTarget.value);
