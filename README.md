@@ -6,9 +6,9 @@ ________________________________________________________________________________
 
 Directions:
 
-1. Go to : https://jo-sean.github.io/rock-paper-scissors-JS/
+1. Go to : https://jo-sean.github.io/rock-paper-scissors-ui/
 2. Input your name or nickname. If you leave it blank, your name will default to "Human Player"
-3. This game is best out of five games against the computer. For each round, type "Rock", "Paper", or "Scissors".
+3. This game is best out of five games against the computer, named HAL 2024. For each round, type "Rock", "Paper", or "Scissors".
 4. At the end of 5 rounds, the winner is shown. 
 
 ___________________________________________________________________________________________________________________
