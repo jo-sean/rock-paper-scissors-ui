@@ -23,7 +23,6 @@ function humanPlay(playerSelection) {
     };
 
     if (score.Player + score.Computer == 5) { showWinner(score); }
-
 };
 
 
@@ -106,8 +105,8 @@ function showWinner() {
 
     document.getElementById('results').innerHTML =
         `Game over! Overall winner was ${winner}. 
-    \Final score is ${score.Player} for ${score.playerName} and ${score.Computer} for Computer. 
-    \Thanks for playing, come play again!`;
+    Final score is ${score.Player} for ${score.playerName} and ${score.Computer} for Computer. 
+    Thanks for playing, come play again!`;
 };
 
 
@@ -135,13 +134,22 @@ function game() {
     };
 };
 
+
+// document.querySelector("userName").addEventListener('change', (e) => {
+//         alert(e.currentTarget.value);
+//     });
+
+
 window.addEventListener('keydown', function (event) {
     let press = event.key;
     if (press === "Enter") {
         key = document.querySelector(`button[value='${press}']`);
+        // score.playerName = document.getElementById('userName').value;
     } else if (!`button[value='${press}']`) { return; }
     key.click();
 });
+
+// fix the enter key input value
 
 
 
