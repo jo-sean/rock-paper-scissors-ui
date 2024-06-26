@@ -1,7 +1,28 @@
 h1,
+h2,
 h3 {
     margin: auto;
     text-align: center;
+    font-size: 4vh;
+}
+
+hr {
+    border-color: #fff;
+    background-color: #fff;
+    color: #fff;
+    height: 2px;
+    border-radius: .6em;
+}
+
+.box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border: #fff solid thick;
+    border-radius: .6em;
+    padding: .5em;
+    margin: 2em;
 }
 
 .highlight {
@@ -17,14 +38,13 @@ h3 {
 input {
     text-align: right;
     border: #84dcc6 solid;
-    padding: 1rem;
+    padding: .5rem;
     caret-color: #84dcc6;
     color: #84dcc6;
     font-size: 1.3rem;
     font-weight: bold;
     border-radius: .6em;
-    margin-bottom: 1.5rem;
-
+    margin: 0 2rem 1rem;
 }
 
 ::placeholder {
@@ -47,15 +67,20 @@ input {
     background-color: white;
     color: #ffa69e;
     border: thick dashed #84dcc6;
-    margin: .5em;
+    margin: .5rem;
     padding: .5rem;
     border-radius: .6em;
     text-align: center;
     font-size: 1.2rem;
-    position: absolute;
+    position: fixed;
     right: 0;
     bottom: 0;
     opacity: 70%;
+}
+
+html,
+body {
+    height: 100%;
 }
 
 body {
@@ -67,8 +92,6 @@ body {
     background-color: #ffa69e;
     color: white;
     font-size: 1.5rem;
-    width: 100%;
-    height: auto;
     line-height: 1.5;
 }
 
@@ -79,7 +102,7 @@ body {
     margin: 0 auto;
     max-width: 300px;
     align-content: center;
-    padding: 1rem;
+    padding: .5rem .0;
     text-align: center;
     background-color: white;
     border-radius: .6em;
@@ -89,11 +112,23 @@ body {
     background-color: white;
     color: #ffa69e;
     border: thick dashed #84dcc6;
-    margin: .2em;
+    margin: 0 4.5rem;
     padding: .5rem;
     border-radius: .6em;
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.choiceButtons {
+    background-color: white;
+    color: #ffa69e;
+    border: thick dashed #84dcc6;
+    margin: .4rem 1.5rem 0;
+    padding: 1rem;
+    border-radius: .6em;
+    text-align: center;
+    font-size: 2rem;
     transition: background-color 0.3s ease;
 }
 
@@ -113,4 +148,5 @@ body {
     text-align: center;
     background-color: #ffa69e;
     border-radius: .6em;
+    font-size: 2.5vh;
 }
